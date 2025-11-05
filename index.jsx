@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <main>
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<login />} exact />
           <Route path='/profile' element={<Profile />} />
         </Routes>
       </main>
@@ -30,7 +30,7 @@ function Login() {
   }
 
   async function createAuth(method) {
-    const res = await fetch('api/auth', {
+    const res = await fetch('api/authorize', {
       method: method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
