@@ -51,6 +51,7 @@ app.get('/api/user/me', async (req, res) => {
   const token = req.cookies['token'];
   const user = await getUser('token', token);
   if (user) {
+    res.status(401).send({ msg: 'Unauthorized' });
     res.send({ email: user.email });
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
@@ -67,7 +68,7 @@ async function createUser(email, password) {
     password: passwordHash,
   };
 
-  users.push(user);
+  user.push(user);
 
   return user;
 }
